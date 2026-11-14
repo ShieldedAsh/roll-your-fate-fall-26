@@ -7,10 +7,6 @@ public class EnemyController : MonoBehaviour
     private GameObject playerRef;
     private Rigidbody2D rb;
 
-    //movement refs
-    [SerializeField]
-    private float maxSpeed = 10f;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
