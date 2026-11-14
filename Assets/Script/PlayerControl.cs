@@ -118,7 +118,7 @@ public class PlayerControl : MonoBehaviour
         {
             //Teleport!
 
-            if (!teleportTarget.GetComponent<TargetCollision>().isColliding)
+            if (teleportTarget.GetComponent<TargetCollision>().isColliding)
             {
                 PlayerDies();
             }
@@ -132,6 +132,6 @@ public class PlayerControl : MonoBehaviour
 
     internal void PlayerDies()
     {
-        //Die!
+        Debug.Log("You Dead");
     }
 }
