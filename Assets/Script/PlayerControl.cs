@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     private Vector2 moveDirection;
-
-
+    private float playerAngle = 0;
+    private float rotSpeed = 22.5f;
 
     void Start()
     {
@@ -29,12 +29,16 @@ public class PlayerControl : MonoBehaviour
         if (moveDirection.x > 0)
         {
             //right arrow
+            playerAngle -= rotSpeed;
 
         }
         else if (moveDirection.x < 0)
         {
             //left arrow
+            playerAngle += rotSpeed;
         }
+
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle);
 
         if (moveDirection.y > 0)
         {
