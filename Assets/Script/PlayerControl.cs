@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     private Vector2 moveDirection;
+    private Vector3 startingPos;
     private float playerAngle = 0;
     private float teleportAngle = 0;
     private float rotSpeed = 45f;
@@ -25,7 +26,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        
+        startingPos = transform.position;
     }
 
     
@@ -127,27 +128,32 @@ public class PlayerControl : MonoBehaviour
             {
                 PlayerDies();
             }
-            if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
+            else
             {
-                lastInteract.GetComponent<Interactable>().InteractMethod();
-                lastInteract = null;
-            }
+                if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
+                {
+                    lastInteract.GetComponent<Interactable>().InteractMethod();
+                    lastInteract = null;
+                }
 
-            if (lastInteract != null)
-            {
-                lastInteract = null;
-            }
-            gameObject.transform.position = targetTransform;
-            camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
+                if (lastInteract != null)
+                {
+                    lastInteract = null;
+                }
+                gameObject.transform.position = targetTransform;
+                camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
 
-            teleportDistance = 0;
+                teleportDistance = 0;
+            }
 
         }
     }
 
     internal void PlayerDies()
     {
-        Debug.Log("You Dead");
+        gameObject.transform.position = startingPos;
+        camma.gameObject.transform.position = new Vector3(startingPos.x, startingPos.y, -10);
+        teleportDistance = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D other)

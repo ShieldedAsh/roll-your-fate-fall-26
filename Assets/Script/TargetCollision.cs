@@ -17,6 +17,16 @@ public class TargetCollision : MonoBehaviour
     }
 
     /// <summary>
+    /// quite remarkable that if two colliders overlap, transfering betwee the two prios exit over enter
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        isColliding = true;
+    }
+
+
+    /// <summary>
     /// checks if something has exited the trigger radius
     /// </summary>
     /// <param name="collision"></param>
