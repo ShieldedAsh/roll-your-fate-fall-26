@@ -11,9 +11,11 @@ public class PlayerControl : MonoBehaviour
     private float teleportDistance = 0;
     private int teleportMod = 1;
 
+
     //target.mp3
     [SerializeField] private GameObject teleportTarget;
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject camma;
+    [SerializeField] private GameObject lite;
 
     private Vector2 targetTransform = Vector2.zero;
 
@@ -41,7 +43,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         //changes player rotation for interaction reasons
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle);
+        lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle);
 
         if (moveDirection.y > 0)
         {
@@ -103,7 +105,7 @@ public class PlayerControl : MonoBehaviour
             }
 
             gameObject.transform.position = targetTransform;
-            camera.gameObject.transform.position = targetTransform;
+            camma.gameObject.transform.position = targetTransform;
             teleportDistance = 0;
         }
     }
