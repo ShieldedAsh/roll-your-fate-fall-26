@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 
     private Vector2 targetTransform = Vector2.zero;
 
-
+    private Interactable lastInteract;
 
 
     void Start()
@@ -49,21 +49,21 @@ public class PlayerControl : MonoBehaviour
         if (moveDirection.y > 0)
         {
             //up arrow
-            teleportDistance += .003f * teleportMod;
+            teleportDistance += 8f * teleportMod * Time.deltaTime;
         }
         else if (moveDirection.y < 0)
         {
             //down arrow
-            teleportAngle -= (rotSpeed/(5+ (teleportDistance*10))) * Time.deltaTime;
+            teleportAngle -= (rotSpeed/(5+ (teleportDistance*7))) * Time.deltaTime;
         }
 
         //A bunch of math to alter the teleport target's position
         targetTransform.x = teleportDistance * (float)Math.Cos(teleportAngle) + gameObject.transform.position.x;
         targetTransform.y = teleportDistance * (float)Math.Sin(teleportAngle) + gameObject.transform.position.y;
-        
+
         teleportTarget.transform.position = targetTransform;
 
-        
+
         //flips the growth/decay of the target if it hits a bounds
         if (teleportDistance > 7 || teleportDistance < 0)
         {
@@ -101,9 +101,14 @@ public class PlayerControl : MonoBehaviour
 
             RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, foward);
 
-            if (hit.Length > 1 && hit[1].distance < 2 && hit[1].collider.gameObject.CompareTag("Interactable"))
+            for (int i = 0;  i < hit.Length; i++)
             {
-                hit[1].collider.GetComponent<Interactable>().InteractMethod();
+                if (hit[i].collider.gameObject.CompareTag("Interactable") && hit[i].distance < 1)
+                {
+                    hit[i].collider.GetComponent<Interactable>().InteractMethod();
+                    lastInteract = hit[i].collider.GetComponent<Interactable>();
+                    break;
+                }
             }
         }
     }
@@ -122,16 +127,34 @@ public class PlayerControl : MonoBehaviour
             {
                 PlayerDies();
             }
+            if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
+            {
+                lastInteract.GetComponent<Interactable>().InteractMethod();
+                lastInteract = null;
+            }
 
+            if (lastInteract != null)
+            {
+                lastInteract = null;
+            }
             gameObject.transform.position = targetTransform;
             camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
 
             teleportDistance = 0;
+
         }
     }
 
     internal void PlayerDies()
     {
         Debug.Log("You Dead");
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            PlayerDies();
+        }
     }
 }
