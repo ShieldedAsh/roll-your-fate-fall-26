@@ -89,20 +89,22 @@ public class PlayerControl : MonoBehaviour
     /// <param name="context"></param>
     public void OnInteract(InputAction.CallbackContext context)
     {
-        // do better i dare you
-        lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle + 45);
-
-        Vector2 foward = (lite.gameObject.transform.rotation * new Vector3 (1,1,0)).normalized;
-
-        lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle - 45);
-        //
-
-        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, foward);
-        
-        if (hit.Length > 1 && hit[1].distance < 2 && hit[1].collider.gameObject.CompareTag("Interactable"))
+        if (context.started)
         {
-            //grab the hit's interactable action and execute it
-            Debug.Log("HIT");
+            // do better i dare you
+            lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle + 45);
+
+            Vector2 foward = (lite.gameObject.transform.rotation * new Vector3(1, 1, 0)).normalized;
+
+            lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle - 45);
+            //
+
+            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, foward);
+
+            if (hit.Length > 1 && hit[1].distance < 2 && hit[1].collider.gameObject.CompareTag("Interactable"))
+            {
+                hit[1].collider.GetComponent<Interactable>().InteractMethod();
+            }
         }
     }
 
