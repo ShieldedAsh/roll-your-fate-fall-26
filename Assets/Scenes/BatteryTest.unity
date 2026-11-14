@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flashlight
   coneLight: {fileID: 2061154555}
   areaLight: {fileID: 1457744834}
-  lightTimer: 10
+  lightTimer: 100
 --- !u!61 &674599871
 BoxCollider2D:
   m_ObjectHideFlags: 0

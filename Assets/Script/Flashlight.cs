@@ -23,16 +23,19 @@ public class Flashlight : MonoBehaviour
         {
             coneLight.intensity = 0.25f;
             areaLight.pointLightOuterRadius = 2.25f;
+            lightTimer -= Time.deltaTime;
         }
         else if (lightTimer <= 50.0f)
         {
             coneLight.intensity = 0.5f;
             areaLight.pointLightOuterRadius = 2.5f;
+            lightTimer -= Time.deltaTime;
         }
         else if (lightTimer <= 75.0f)
         {
             coneLight.intensity = 0.75f;
             areaLight.pointLightOuterRadius = 2.75f;
+            lightTimer -= Time.deltaTime;
         }
         else
         {
