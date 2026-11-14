@@ -95,6 +95,12 @@ public class PlayerControl : MonoBehaviour
         if (context.started)
         {
             //Teleport!
+
+            if (!teleportTarget.GetComponent<TargetCollision>().isColliding)
+            {
+                //Die!
+            }
+
             gameObject.transform.position = targetTransform;
             teleportDistance = 0;
         }
