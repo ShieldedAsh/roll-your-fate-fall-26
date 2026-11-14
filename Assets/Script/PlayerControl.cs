@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 
     private Vector2 targetTransform = Vector2.zero;
 
-    private GameObject lastInteract;
+    private Interactable lastInteract;
 
 
     void Start()
@@ -106,8 +106,8 @@ public class PlayerControl : MonoBehaviour
                 if (hit[i].collider.gameObject.CompareTag("Interactable") && hit[i].distance < 1)
                 {
                     hit[i].collider.GetComponent<Interactable>().InteractMethod();
-                    lastInteract = hit[i].collider.GetComponent<GameObject>();
-                    continue;
+                    lastInteract = hit[i].collider.GetComponent<Interactable>();
+                    break;
                 }
             }
         }
@@ -129,14 +129,15 @@ public class PlayerControl : MonoBehaviour
             }
             if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
             {
-                Debug.Log("here");
                 lastInteract.GetComponent<Interactable>().InteractMethod();
                 lastInteract = null;
             }
+
             gameObject.transform.position = targetTransform;
             camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
 
             teleportDistance = 0;
+            
         }
     }
 

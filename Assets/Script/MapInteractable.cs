@@ -5,7 +5,7 @@ class MapInteractable : Interactable
 {
     [SerializeField] private Image map;
 
-    
+
     /// <summary>
     /// display's map
     /// </summary>
