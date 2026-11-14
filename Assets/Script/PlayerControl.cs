@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -59,7 +60,9 @@ public class PlayerControl : MonoBehaviour
         //A bunch of math to alter the teleport target's position
         targetTransform.x = teleportDistance * (float)Math.Cos(teleportAngle) + gameObject.transform.position.x;
         targetTransform.y = teleportDistance * (float)Math.Sin(teleportAngle) + gameObject.transform.position.y;
+        
         teleportTarget.transform.position = targetTransform;
+
         
         //flips the growth/decay of the target if it hits a bounds
         if (teleportDistance > 7 || teleportDistance < 0)
@@ -86,7 +89,18 @@ public class PlayerControl : MonoBehaviour
     /// <param name="context"></param>
     public void OnInteract(InputAction.CallbackContext context)
     {
+        lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle + 45);
 
+        Vector2 foward = (lite.gameObject.transform.rotation * new Vector3 (1,1,0)).normalized;
+
+        lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle - 45);
+
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, foward);
+        
+        if (hit.Length > 1 && hit[1].distance < 2 && hit[1].collider.gameObject.CompareTag("Interactable"))
+        {
+            Debug.Log("HIT");
+        }
     }
 
     /// <summary>
@@ -105,7 +119,8 @@ public class PlayerControl : MonoBehaviour
             }
 
             gameObject.transform.position = targetTransform;
-            camma.gameObject.transform.position = targetTransform;
+            camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
+
             teleportDistance = 0;
         }
     }
