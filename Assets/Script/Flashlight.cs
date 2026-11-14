@@ -9,7 +9,7 @@ public class Flashlight : MonoBehaviour
     private Light2D areaLight; //light that surrounds you: "area light"
 
     [SerializeField]
-    public float lightTimer = 10f;
+    public float lightTimer = 100f;
 
     // Update is called once per frame
     void Update()
@@ -18,6 +18,21 @@ public class Flashlight : MonoBehaviour
         {
             coneLight.intensity = 0.0f;
             areaLight.pointLightOuterRadius = 2.0f;
+        }
+        else if (lightTimer <= 25.0f)
+        {
+            coneLight.intensity = 0.25f;
+            areaLight.pointLightOuterRadius = 2.25f;
+        }
+        else if (lightTimer <= 50.0f)
+        {
+            coneLight.intensity = 0.5f;
+            areaLight.pointLightOuterRadius = 2.5f;
+        }
+        else if (lightTimer <= 75.0f)
+        {
+            coneLight.intensity = 0.75f;
+            areaLight.pointLightOuterRadius = 2.75f;
         }
         else
         {
