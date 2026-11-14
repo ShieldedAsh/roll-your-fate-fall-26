@@ -84,21 +84,24 @@ public class PlayerControl : MonoBehaviour
     }
 
     /// <summary>
-    /// TODO: make interaction
+    /// casts a ray to see if an interactable is in range and has the interactable tag
     /// </summary>
     /// <param name="context"></param>
     public void OnInteract(InputAction.CallbackContext context)
     {
+        // do better i dare you
         lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle + 45);
 
         Vector2 foward = (lite.gameObject.transform.rotation * new Vector3 (1,1,0)).normalized;
 
         lite.gameObject.transform.rotation = Quaternion.Euler(0, 0, playerAngle - 45);
+        //
 
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, foward);
         
         if (hit.Length > 1 && hit[1].distance < 2 && hit[1].collider.gameObject.CompareTag("Interactable"))
         {
+            //grab the hit's interactable action and execute it
             Debug.Log("HIT");
         }
     }
@@ -115,7 +118,7 @@ public class PlayerControl : MonoBehaviour
 
             if (!teleportTarget.GetComponent<TargetCollision>().isColliding)
             {
-                //Die!
+                PlayerDies();
             }
 
             gameObject.transform.position = targetTransform;
@@ -123,5 +126,10 @@ public class PlayerControl : MonoBehaviour
 
             teleportDistance = 0;
         }
+    }
+
+    internal void PlayerDies()
+    {
+        //Die!
     }
 }
