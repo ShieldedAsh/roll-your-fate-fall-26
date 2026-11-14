@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
 
     //target.mp3
     [SerializeField] private GameObject teleportTarget;
+    [SerializeField] private GameObject camera;
 
     private Vector2 targetTransform = Vector2.zero;
 
@@ -57,7 +58,7 @@ public class PlayerControl : MonoBehaviour
         targetTransform.x = teleportDistance * (float)Math.Cos(teleportAngle) + gameObject.transform.position.x;
         targetTransform.y = teleportDistance * (float)Math.Sin(teleportAngle) + gameObject.transform.position.y;
         teleportTarget.transform.position = targetTransform;
-
+        
         //flips the growth/decay of the target if it hits a bounds
         if (teleportDistance > 7 || teleportDistance < 0)
         {
@@ -102,6 +103,7 @@ public class PlayerControl : MonoBehaviour
             }
 
             gameObject.transform.position = targetTransform;
+            camera.gameObject.transform.position = targetTransform;
             teleportDistance = 0;
         }
     }
