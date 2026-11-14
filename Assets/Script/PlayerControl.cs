@@ -25,10 +25,10 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
-
+    
     void Update()
     {
         if (moveDirection.x > 0 )
@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
         {
             teleportMod *= -1;
         }
-
+        
     }
 
 
@@ -117,7 +117,7 @@ public class PlayerControl : MonoBehaviour
     /// Teleports the player to the target, also resets the teleport target's distance
     /// </summary>
     /// <param name="context"></param>
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context) 
     {
         if (context.started)
         {
