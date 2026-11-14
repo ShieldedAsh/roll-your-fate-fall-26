@@ -133,6 +133,10 @@ public class PlayerControl : MonoBehaviour
                 lastInteract = null;
             }
 
+            if (lastInteract != null)
+            {
+                lastInteract = null;
+            }
             gameObject.transform.position = targetTransform;
             camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
 
