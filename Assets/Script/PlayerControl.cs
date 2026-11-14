@@ -25,10 +25,10 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
-    
+
     void Update()
     {
         if (moveDirection.x > 0 )
@@ -60,16 +60,16 @@ public class PlayerControl : MonoBehaviour
         //A bunch of math to alter the teleport target's position
         targetTransform.x = teleportDistance * (float)Math.Cos(teleportAngle) + gameObject.transform.position.x;
         targetTransform.y = teleportDistance * (float)Math.Sin(teleportAngle) + gameObject.transform.position.y;
-        
+
         teleportTarget.transform.position = targetTransform;
 
-        
+
         //flips the growth/decay of the target if it hits a bounds
         if (teleportDistance > 7 || teleportDistance < 0)
         {
             teleportMod *= -1;
         }
-        
+
     }
 
 
@@ -117,7 +117,7 @@ public class PlayerControl : MonoBehaviour
     /// Teleports the player to the target, also resets the teleport target's distance
     /// </summary>
     /// <param name="context"></param>
-    public void OnAttack(InputAction.CallbackContext context) 
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started)
         {
@@ -141,12 +141,20 @@ public class PlayerControl : MonoBehaviour
             camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
 
             teleportDistance = 0;
-            
+
         }
     }
 
     internal void PlayerDies()
     {
         Debug.Log("You Dead");
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            PlayerDies();
+        }
     }
 }
