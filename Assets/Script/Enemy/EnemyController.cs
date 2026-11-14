@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -14,23 +15,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.destination = playerRef.transform.position;
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-       rb.MovePosition(transform.position + Seek(playerRef.transform.position) * Time.fixedDeltaTime);
-    }
-
-    private Vector3 Seek(Vector3 targetPos)
-    {
-        Vector3 desiredVel = targetPos - transform.position;
-
-        desiredVel = desiredVel.normalized * maxSpeed;
-
-        Vector3 seekForce = desiredVel - new Vector3(rb.linearVelocityX, rb.linearVelocityY, 0);
-
-        return seekForce;
-    }
-
 }
