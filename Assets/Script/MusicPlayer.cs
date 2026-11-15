@@ -100,7 +100,7 @@ public class MusicPlayer : MonoBehaviour
         //Play win music on win screen
         else if (SceneManager.GetActiveScene().name == "WinScene")
         {
-            //SwapLooped(WinScreenMusic);
+            SwapLooped(WinScreenMusic);
         }
     }
 
