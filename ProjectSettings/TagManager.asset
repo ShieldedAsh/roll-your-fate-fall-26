@@ -7,6 +7,7 @@ TagManager:
   - Enviornment
   - Interactable
   - Enemy
+  - Battery
   layers:
   - Default
   - TransparentFX
