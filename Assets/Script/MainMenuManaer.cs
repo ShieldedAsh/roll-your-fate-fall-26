@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MainMenuManaer : MonoBehaviour
 {
-    public string gameScene = "TilemapTesting";
+    public string gameScene = "LevelAlphaScene";
     public void _StartGame()
     {
         _LoadSceneManual(gameScene);

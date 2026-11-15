@@ -90,6 +90,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (sceneIndex == loadingSceneIndex)
         {
+            Debug.Log(loadingSceneIndex);
             throw new System.InvalidOperationException("trying to load into the loading scene is not permitted!");
         }
         si = sceneIndex;
