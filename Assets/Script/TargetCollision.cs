@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TargetCollision : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("WinScene");
+        }
         if (!collision.gameObject.CompareTag("Enviornment"))
         {
             Debug.Log("in");
@@ -26,6 +31,10 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("WinScene");
+        }
         if (!collision.gameObject.CompareTag("Enviornment"))
         {
             Debug.Log("in");

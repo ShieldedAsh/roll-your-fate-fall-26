@@ -160,14 +160,12 @@ public class PlayerControl : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.tag == "Enemy")
         {
             PlayerDies();
         }
 
-        if (other.gameObject.tag == "Finish")
-        {
-            SceneManager.LoadScene("GaeJoever");
-        }
+       
     }
 }
