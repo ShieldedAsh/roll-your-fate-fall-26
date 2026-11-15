@@ -88,19 +88,19 @@ public class MusicPlayer : MonoBehaviour
         //Play main menu music on main menu
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            SwapLooped(MainMenuMusic);
+            SwapOnce(_mainMenu);
         }
 
         //Play death music on death screen
         else if (SceneManager.GetActiveScene().name == "GaeJover")
         {
-            SwapOnce(DeathScreenMusic);
+            SwapOnce(_deathScreen);
         }
 
         //Play win music on win screen
         else if (SceneManager.GetActiveScene().name == "WinScene")
         {
-            SwapLooped(WinScreenMusic);
+            SwapOnce(_winScreen);
         }
     }
 
@@ -124,9 +124,11 @@ public class MusicPlayer : MonoBehaviour
     /// <param name="next">The next track to play</param>
     public void SwapOnce(AudioClip next)
     {
-        _audioSource.Stop();
-        _audioSource.loop = false;
-        _audioSource.clip = next;
-        _audioSource.Play();
+        if(!_audioSource.isPlaying)
+        {
+            _audioSource.loop = false;
+            _audioSource.clip = next;
+            _audioSource.Play();
+        }
     }
 }

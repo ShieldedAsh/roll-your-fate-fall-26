@@ -478,6 +478,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 72482395493896776, guid: a65a00425face24408b219d34b38d4e2, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72482395493896776, guid: a65a00425face24408b219d34b38d4e2, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 0327f2d9e97c97a47a9e446dffa7cdbb, type: 3}
+    - target: {fileID: 72482395493896776, guid: a65a00425face24408b219d34b38d4e2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 684120761641857307, guid: a65a00425face24408b219d34b38d4e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

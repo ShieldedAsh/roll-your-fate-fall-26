@@ -148,6 +148,22 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Zone1ID")
+        {
+            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.HoldingCellMusic);
+        }
+        else if (collision.gameObject.name == "Zone2ID")
+        {
+            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.RedAreaMusic);
+        }
+        else if (collision.gameObject.name == "Zone3ID")
+        {
+            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.BlueAreaMusic);
+        }
+    }
+
     private void StartTeleport()
     {
         animator.Play("Base Layer.BeaverTeleport", 0, 0);
