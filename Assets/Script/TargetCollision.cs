@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TargetCollision : MonoBehaviour
 {
@@ -12,9 +13,35 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("in");
-        isColliding = true;
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("WinScene");
+        }
+        if (!collision.gameObject.CompareTag("Enviornment"))
+        {
+            Debug.Log("in");
+            isColliding = true;
+        }
+
     }
+
+    /// <summary>
+    /// quite remarkable that if two colliders overlap, transfering betwee the two prios exit over enter
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("WinScene");
+        }
+        if (!collision.gameObject.CompareTag("Enviornment"))
+        {
+            Debug.Log("in");
+            isColliding = true;
+        }
+    }
+
 
     /// <summary>
     /// checks if something has exited the trigger radius
