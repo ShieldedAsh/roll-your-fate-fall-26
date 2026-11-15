@@ -49,6 +49,7 @@ public class Flashlight : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Battery"))
         {
+            gameObject.GetComponent<PlayerControl>().BatteryPickup();
             Debug.Log("enter");
             lightTimer += 25.0f;
             Destroy(other.gameObject);
