@@ -24,10 +24,14 @@ public class PlayerControl : MonoBehaviour
 
     private Interactable lastInteract;
 
+    private Animator animator;
+
 
     void Start()
     {
         startingPos = transform.position;
+        animator = GetComponent<Animator>();
+        animator.Play("Base Layer.BeaverTeleportEnd", 0, 1);
     }
 
     
@@ -123,30 +127,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.started)
         {
-            //Teleport!
-
-            if (teleportTarget.GetComponent<TargetCollision>().isColliding)
-            {
-                PlayerDies();
-            }
-            else
-            {
-                if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
-                {
-                    lastInteract.GetComponent<Interactable>().InteractMethod();
-                    lastInteract = null;
-                }
-
-                if (lastInteract != null)
-                {
-                    lastInteract = null;
-                }
-                gameObject.transform.position = targetTransform;
-                camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
-
-                teleportDistance = 0;
-            }
-
+            StartTeleport();
         }
     }
 
@@ -160,25 +141,42 @@ public class PlayerControl : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.tag == "Enemy")
         {
             PlayerDies();
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void StartTeleport()
     {
-        if(collision.gameObject.name == "Zone1ID")
+        animator.Play("Base Layer.BeaverTeleport", 0, 0);
+    }
+
+    public void Teleport()
+    {
+        //Teleport!
+
+        if (teleportTarget.GetComponent<TargetCollision>().isColliding)
         {
-            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.HoldingCellMusic);
+            PlayerDies();
         }
-        else if(collision.gameObject.name == "Zone2ID")
+        else
         {
-            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.RedAreaMusic);
-        }
-        else if (collision.gameObject.name == "Zone3ID")
-        {
-            MusicPlayer.Instance.SwapLooped(MusicPlayer.Instance.BlueAreaMusic);
+            if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
+            {
+                lastInteract.GetComponent<Interactable>().InteractMethod();
+                lastInteract = null;
+            }
+
+            if (lastInteract != null)
+            {
+                lastInteract = null;
+            }
+            gameObject.transform.position = targetTransform;
+            camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
+
+            teleportDistance = 0;
         }
     }
 }
