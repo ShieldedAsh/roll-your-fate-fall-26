@@ -15,7 +15,6 @@ public class StartButtonScript : MonoBehaviour
 
     void TaskOnClick()
     {
-        Debug.Log("e");
         SceneManager.LoadSceneAsync("LevelAlphaScene");
     }
 }

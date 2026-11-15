@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainMenuManaer : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     public string gameScene = "LevelAlphaScene";
     public void _StartGame()

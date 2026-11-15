@@ -17,9 +17,8 @@ public class TargetCollision : MonoBehaviour
         {
             SceneManager.LoadScene("WinScene");
         }
-        if (!collision.gameObject.CompareTag("Enviornment"))
+        if (!(collision.gameObject.CompareTag("Enviornment") || collision.gameObject.CompareTag("Battery")))//shup up
         {
-            Debug.Log("in");
             isColliding = true;
         }
 
@@ -35,9 +34,8 @@ public class TargetCollision : MonoBehaviour
         {
             SceneManager.LoadScene("WinScene");
         }
-        if (!collision.gameObject.CompareTag("Enviornment"))
+        if (!(collision.gameObject.CompareTag("Enviornment") || collision.gameObject.CompareTag("Battery")))
         {
-            Debug.Log("in");
             isColliding = true;
         }
     }
@@ -49,7 +47,6 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Out");
         isColliding = false;
     }
 
