@@ -19,7 +19,6 @@ public class TargetCollision : MonoBehaviour
         }
         if (!collision.gameObject.CompareTag("Enviornment"))
         {
-            Debug.Log("in");
             isColliding = true;
         }
 
@@ -37,7 +36,6 @@ public class TargetCollision : MonoBehaviour
         }
         if (!collision.gameObject.CompareTag("Enviornment"))
         {
-            Debug.Log("in");
             isColliding = true;
         }
     }
@@ -49,7 +47,6 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Out");
         isColliding = false;
     }
 
