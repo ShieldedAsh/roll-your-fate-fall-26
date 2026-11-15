@@ -17,7 +17,7 @@ public class TargetCollision : MonoBehaviour
         {
             SceneManager.LoadScene("WinScene");
         }
-        if (!collision.gameObject.CompareTag("Enviornment"))
+        if (!(collision.gameObject.CompareTag("Enviornment") || collision.gameObject.CompareTag("Battery")))//shup up
         {
             isColliding = true;
         }
@@ -34,7 +34,7 @@ public class TargetCollision : MonoBehaviour
         {
             SceneManager.LoadScene("WinScene");
         }
-        if (!collision.gameObject.CompareTag("Enviornment"))
+        if (!(collision.gameObject.CompareTag("Enviornment") || collision.gameObject.CompareTag("Battery")))
         {
             isColliding = true;
         }
