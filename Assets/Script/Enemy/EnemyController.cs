@@ -16,5 +16,6 @@ public class EnemyController : MonoBehaviour
 
     void Update(){
         agent.destination = playerRef.transform.position;
+        transform.rotation = Quaternion.identity;
     }
 }

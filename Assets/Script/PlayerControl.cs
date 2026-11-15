@@ -2,6 +2,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -151,6 +152,7 @@ public class PlayerControl : MonoBehaviour
 
     internal void PlayerDies()
     {
+        SceneManager.LoadScene("GaeJoever");
         gameObject.transform.position = startingPos;
         camma.gameObject.transform.position = new Vector3(startingPos.x, startingPos.y, -10);
         teleportDistance = 0;
@@ -161,6 +163,11 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             PlayerDies();
+        }
+
+        if (other.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("GaeJoever");
         }
     }
 }

@@ -9,14 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 480b5484ada64e74b8449a0af4014f6c
   - enabled: 1
-    path: Assets/Scenes/LoadingScreen.unity
-    guid: eb18e864df787e4429a6559ab7d8d715
+    path: Assets/Scenes/LevelAlphaScene.unity
+    guid: b3b6b72844472af4d943e28a539b466d
   - enabled: 1
-    path: Assets/Scenes/TilemapTesting.unity
-    guid: da8d1c506885702489fe7d3b7dcf36b5
-  - enabled: 1
-    path: Assets/Scenes/WinScene.unity
-    guid: d43e56e983a0c7e4d82f5138c74f22df
+    path: Assets/Scenes/GaeJoever.unity
+    guid: 4b2ef54724e849a4e9c215b6d1d887d3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

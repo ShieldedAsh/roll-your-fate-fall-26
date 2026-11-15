@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartButtonScript : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class StartButtonScript : MonoBehaviour
 
     void TaskOnClick()
     {
-        //im so level scene
+        SceneManager.LoadSceneAsync("LevelAlphaScene");
     }
 }
+
 
