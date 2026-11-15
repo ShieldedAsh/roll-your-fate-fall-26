@@ -26,6 +26,17 @@ public class PlayerControl : MonoBehaviour
 
     private Animator animator;
 
+    [Tooltip("AudioSource for the player")]
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [Tooltip("Teleport out Sound")]
+    [SerializeField]
+    private AudioClip teleportSound;
+
+    [Tooltip("Battery pickup sound")]
+    [SerializeField]
+    private AudioClip batterySound;
 
     void Start()
     {
@@ -172,13 +183,15 @@ public class PlayerControl : MonoBehaviour
     public void Teleport()
     {
         //Teleport!
-
         if (teleportTarget.GetComponent<TargetCollision>().isColliding)
         {
             PlayerDies();
         }
         else
         {
+            audioSource.clip = teleportSound;
+            audioSource.Play();
+
             if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
             {
                 lastInteract.GetComponent<Interactable>().InteractMethod();
@@ -194,5 +207,11 @@ public class PlayerControl : MonoBehaviour
 
             teleportDistance = 0;
         }
+    }
+
+    public void BatteryPickup()
+    {
+        audioSource.clip = batterySound;
+        audioSource.Play();
     }
 }

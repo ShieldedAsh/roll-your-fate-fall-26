@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
         timer = 0.0f;
+        audioSource.maxDistance = 30.0f;
     }
 
     void Update(){
@@ -36,11 +37,21 @@ public class EnemyController : MonoBehaviour
 
         //Play a footstep every 0.3f seconds
         timer += Time.deltaTime;
+        float distToPlayer = Vector3.Distance(playerRef.transform.position, transform.position);
 
         if(timer >= 0.3f)
         {
-            audioSource.clip = GetFootstepSound();
-            audioSource.Play();
+            if(distToPlayer <= audioSource.maxDistance)
+            {
+                //Make volume proportional to distance
+                audioSource.volume = (audioSource.maxDistance / distToPlayer) / 30.0f;
+
+                ////Sound is logarithmic
+                //audioSource.volume = Mathf.Log(distToPlayer, 2.0f);
+                audioSource.clip = GetFootstepSound();
+                audioSource.Play();
+            }
+
             timer -= 0.3f;
         }
     }
