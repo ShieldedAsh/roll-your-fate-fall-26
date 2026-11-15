@@ -164,5 +164,10 @@ public class PlayerControl : MonoBehaviour
         {
             PlayerDies();
         }
+
+        if (other.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("GaeJoever");
+        }
     }
 }
