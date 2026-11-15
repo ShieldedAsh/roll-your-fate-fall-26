@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08ceb78e3b2495b8d808a5860e66794, type: 3}
+  m_Name: Red Floor
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AutoTile
+  m_DefaultSprite: {fileID: -135423722, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_MaskType: 0
+  m_Random: 1
+  m_PhysicsShapeCheck: 0
+  m_AutoTileDictionary:
+    keyData: 0f000000
+    valueData:
+    - spriteList:
+      - {fileID: 1116565026, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -306348250, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -135423722, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 7040301978524103252, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2027142512, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 1852881972, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -526312527, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -1248358330, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -386727540, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 1229552709, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 1265023201, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -122114151, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 542542200, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: -270029895, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 837782755, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 877383463, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      textureList:
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+      - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+  m_TextureList:
+  - {fileID: 2800000, guid: e244be3d1beb701428500779beaa3eb5, type: 3}
+  m_TextureScaleList:
+  - 1
