@@ -12,8 +12,12 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("in");
-        isColliding = true;
+        if (!collision.gameObject.CompareTag("Enviornment"))
+        {
+            Debug.Log("in");
+            isColliding = true;
+        }
+
     }
 
     /// <summary>
@@ -22,7 +26,11 @@ public class TargetCollision : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerStay2D(Collider2D collision)
     {
-        isColliding = true;
+        if (!collision.gameObject.CompareTag("Enviornment"))
+        {
+            Debug.Log("in");
+            isColliding = true;
+        }
     }
 
 
