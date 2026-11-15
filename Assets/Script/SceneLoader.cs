@@ -36,7 +36,12 @@ public class SceneLoader : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(this);
-        loadingSceneIndex = SceneManager.GetSceneByName(loadingScene).buildIndex;
+        loadingSceneIndex = GetSceneByName(loadingScene);
+
+        if (loadingSceneIndex == -1)
+        {
+            Debug.LogError("the loading screen is not in the scene list!");
+        }
     }
 
     private void Update()
@@ -86,8 +91,13 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     /// <param name="sceneIndex">the build index of the scene we want to load</param>
     /// <exception cref="System.InvalidOperationException">don't load the loading scene</exception>
+    /// /// <exception cref="System.IndexOutOfRangeException">invalid scene</exception>
     public void LoadScene(int sceneIndex)
     {
+        if(sceneIndex < 0 || sceneIndex > SceneManager.sceneCountInBuildSettings)
+        {
+            throw new System.IndexOutOfRangeException($"scene: {sceneIndex} is out of the bounds of valid scene indecies!");
+        }
         if (sceneIndex == loadingSceneIndex)
         {
             Debug.Log(loadingSceneIndex);
@@ -102,8 +112,39 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     /// <param name="sceneName">the name of the scene we want to load</param>
     /// /// <exception cref="System.InvalidOperationException">don't load the loading scene</exception>
+    /// /// /// <exception cref="System.IndexOutOfRangeException">invalid scene</exception>
     public void LoadScene(string sceneName)
     {
-        LoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
+        int scene = GetSceneByName(sceneName);
+        if (scene >= 0)
+        {
+            LoadScene(scene);
+        }
+        else
+        {
+            Debug.LogError($"no scene named \"{sceneName}\" found!");
+        }
+    }
+
+    /// <summary>
+    /// gets a scene build index by name
+    /// </summary>
+    /// <param name="name">the name of the scene to get</param>
+    /// <returns></returns>
+    public static int GetSceneByName(string name)
+    {
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(i);
+            int nameStart = path.LastIndexOf('/') + 1;
+            int nameEnd = path.LastIndexOf('.');
+            int length = nameEnd - nameStart;
+            string cSceneName = path.Substring(nameStart, length);
+            if (cSceneName == name)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }
