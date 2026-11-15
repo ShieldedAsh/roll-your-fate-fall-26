@@ -142,6 +142,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void OnExit(InputAction.CallbackContext context)
+    {
+        Application.Quit();
+    }
+
     internal void PlayerDies()
     {
         SceneManager.LoadScene("GaeJoever");
