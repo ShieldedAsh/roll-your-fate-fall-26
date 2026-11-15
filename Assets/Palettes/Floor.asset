@@ -22,22 +22,22 @@ MonoBehaviour:
     keyData: 0f000000
     valueData:
     - spriteList:
-      - {fileID: 1958472421, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: -989199824, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: 1539034529, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: 1210259932492536475, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -2896933, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: 1019937638, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -1908139802, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -1807674307, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -246259756, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -677414747, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: 2123868706, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
-      - {fileID: -83840462, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: 2128238616, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: -1120638946, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: -385799835, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: -1891223115, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -83840462, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: 2123868706, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -677414747, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -246259756, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: 1958472421, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -2896933, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: 1019937638, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -1908139802, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
+      - {fileID: -1807674307, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       textureList:
       - {fileID: 2800000, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: 2800000, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
@@ -56,8 +56,6 @@ MonoBehaviour:
       - {fileID: 2800000, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
       - {fileID: 2800000, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
   m_TextureList:
-  - {fileID: 0}
   - {fileID: 2800000, guid: 1bd07e77e1e98ee4484ba3610964a4da, type: 3}
   m_TextureScaleList:
-  - 1
   - 1

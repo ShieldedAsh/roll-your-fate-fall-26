@@ -2,10 +2,12 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
     private Vector2 moveDirection;
+    private Vector3 startingPos;
     private float playerAngle = 0;
     private float teleportAngle = 0;
     private float rotSpeed = 45f;
@@ -22,12 +24,10 @@ public class PlayerControl : MonoBehaviour
 
     private Interactable lastInteract;
 
-    private Animator animator;
+
     void Start()
     {
-        animator = GetComponent<Animator>();
-        //i forgor how to have it not play on awake, so hardcode it to not be able to
-        animator.Play("Base Layer.BeaverTeleportEnd", 0, 1);
+        startingPos = transform.position;
     }
 
     
@@ -123,54 +123,49 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.started)
         {
-            StartTeleport();
+            //Teleport!
+
+            if (teleportTarget.GetComponent<TargetCollision>().isColliding)
+            {
+                PlayerDies();
+            }
+            else
+            {
+                if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
+                {
+                    lastInteract.GetComponent<Interactable>().InteractMethod();
+                    lastInteract = null;
+                }
+
+                if (lastInteract != null)
+                {
+                    lastInteract = null;
+                }
+                gameObject.transform.position = targetTransform;
+                camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
+
+                teleportDistance = 0;
+            }
+
         }
     }
 
     internal void PlayerDies()
     {
-        Debug.Log("You Dead");
+        SceneManager.LoadScene("GaeJoever");
+        gameObject.transform.position = startingPos;
+        camma.gameObject.transform.position = new Vector3(startingPos.x, startingPos.y, -10);
+        teleportDistance = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.tag == "Enemy")
         {
             PlayerDies();
         }
-    }
-    /// <summary>
-    /// calls the animator to start the teleport
-    /// </summary>
-    private void StartTeleport()
-    {
-        animator.Play("Base Layer.BeaverTeleport", 0,0); 
-    }
 
-    /// <summary>
-    /// controlled via animation
-    /// </summary>
-    public void Teleport()
-    {
-        //Teleport!
-
-        if (teleportTarget.GetComponent<TargetCollision>().isColliding)
-        {
-            PlayerDies();
-        }
-        if (lastInteract != null && lastInteract.GetComponent<Interactable>().flip)
-        {
-            lastInteract.GetComponent<Interactable>().InteractMethod();
-            lastInteract = null;
-        }
-
-        if (lastInteract != null)
-        {
-            lastInteract = null;
-        }
-        gameObject.transform.position = targetTransform;
-        camma.gameObject.transform.position = new Vector3(targetTransform.x, targetTransform.y, -10);
-
-        teleportDistance = 0;
+       
     }
 }
